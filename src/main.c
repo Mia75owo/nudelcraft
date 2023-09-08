@@ -1,7 +1,7 @@
+#include "shader.h"
 #include <GL/glew.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "shader.h"
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
@@ -43,11 +43,8 @@ int main(int argc, char **argv) {
   Shader shader;
   shader_init(&shader, "src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
 
-  float vertices[] = {
-      -1.0f, -1.0f, -0.0f, 1.0f, 1.0f,  -0.0f,
-      -1.0f, 1.0f,  -0.0f, 1.0f, -1.0f, -0.0f,
-  };
-  unsigned int indicies[] = {0, 1, 2, 0, 3, 1};
+  float vertices[] = {-0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f};
+  unsigned int indicies[] = {0, 1, 2};
 
   unsigned int VAO, VBO, EBO;
   glGenVertexArrays(1, &VAO);
@@ -71,7 +68,7 @@ int main(int argc, char **argv) {
   //=============
 
   glUseProgram(shader.ID);
-  
+
   while (!glfwWindowShouldClose(window)) {
     glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
