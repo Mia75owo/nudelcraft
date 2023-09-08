@@ -11,8 +11,8 @@ OUT=out
 CC=clang
 CC_flags=
 
-LDF=clang
-LD_flags=
+LD=clang
+LD_flags=-lGL -lglfw -lGLEW
 
 
 # =====
@@ -40,7 +40,7 @@ $(OUT)/%.o: $(SRC)/%.c
 
 # The main file
 $(OUT)/$(TARGET): $(C_OBJS)
-	$(LDF) $(C_OBJS) -o $@
+	$(LD) $(LD_flags) $(C_OBJS) -o $@
 
 compile: $(OUT)/$(TARGET)
 
@@ -53,4 +53,4 @@ clean:
 	rm -rf $(OUT)/*
 
 start: compile
-	./$(OUT)/$(TARGET) init c foo
+	./$(OUT)/$(TARGET)
