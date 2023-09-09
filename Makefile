@@ -9,7 +9,7 @@ OUT=out
 # ========
 
 CC=clang
-CC_flags=
+CC_flags=-ggdb3
 
 LD=clang
 LD_flags=-lGL -lglfw -lGLEW
@@ -51,6 +51,9 @@ compile: $(OUT)/$(TARGET)
 
 clean:
 	rm -rf $(OUT)/*
+
+valgrind: compile
+	valgrind --tool=memcheck --track-origins=yes ./$(OUT)/$(TARGET)
 
 start: compile
 	./$(OUT)/$(TARGET)

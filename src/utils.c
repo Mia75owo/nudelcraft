@@ -1,10 +1,11 @@
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 const char *file_to_string(const char *filepath) {
   char *buffer = NULL;
-  long length;
+  long length = 0;
   FILE *file = fopen(filepath, "rb");
 
   if (!file) {
@@ -15,11 +16,13 @@ const char *file_to_string(const char *filepath) {
   fseek(file, 0, SEEK_END);
   length = ftell(file);
   fseek(file, 0, SEEK_SET);
-  buffer = malloc(length);
+  buffer = malloc(length + 1);
   if (buffer) {
+    memset(buffer, 0, length + 1);
     fread(buffer, 1, length, file);
   } else {
     printf(">! Failed to alloc buffer for file: %s\n", filepath);
+    buffer = NULL;
   }
   fclose(file);
 
