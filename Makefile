@@ -9,7 +9,7 @@ OUT=out
 # ========
 
 CC=clang
-CC_flags=-ggdb3
+CC_flags=-Wall -ggdb3
 
 LD=clang
 LD_flags=-lGL -lglfw -lGLEW
