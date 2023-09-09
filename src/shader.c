@@ -23,6 +23,7 @@ int shader_init(Shader *self, const char *vertex_path,
   // Check the status code of the vertex shader
   glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
   if (!success) {
+    // Read the status message into the "info_log" buffer
     glGetShaderInfoLog(vertex, 512, NULL, info_log);
     printf("%s\n", info_log);
   }
@@ -35,6 +36,7 @@ int shader_init(Shader *self, const char *vertex_path,
   // Check the status code of the fragment shader
   glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
   if (!success) {
+    // Read the status message into the "info_log" buffer
     glGetShaderInfoLog(fragment, 512, NULL, info_log);
     printf("%s\n", info_log);
   }
@@ -48,6 +50,7 @@ int shader_init(Shader *self, const char *vertex_path,
   // Check the status code of the program
   glGetProgramiv(self->ID, GL_LINK_STATUS, &success);
   if (!success) {
+    // Read the status message into the "info_log" buffer
     glGetProgramInfoLog(self->ID, 512, NULL, info_log);
     printf("%s\n", info_log);
   }

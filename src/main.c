@@ -6,6 +6,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
+// Handle resize
 void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
   glViewport(0, 0, width, height);
 }
@@ -67,6 +68,7 @@ int main(int argc, char **argv) {
   glGenBuffers(1, &VBO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
+  // Load the vertices into the vertex array buffer
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
   // [y, y, z]
@@ -93,9 +95,11 @@ int main(int argc, char **argv) {
   // main loop
   //=============
 
+  // Enable our shader
   glUseProgram(shader.ID);
 
   while (!glfwWindowShouldClose(window)) {
+    // Clear the screen
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -107,6 +111,7 @@ int main(int argc, char **argv) {
     glfwPollEvents();
   }
 
+  // Cleanup
   glDeleteVertexArrays(1, &VAO);
   glDeleteBuffers(1, &VAO);
   glDeleteBuffers(1, &EBO);
