@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
       0.0f,  0.5f,  0.0f, // 3
   };
 
-  // Copy the date into the underlying array buffer (VAO)
+  // Copy the date into the buffer
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
   // [x, y, z] (tell openGL how to interpret the data in the array)
