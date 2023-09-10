@@ -12,7 +12,7 @@ CC=clang
 CC_flags=-Wall -ggdb3
 
 LD=clang
-LD_flags=-lGL -lglfw -lGLEW
+LD_flags=-lGL -lglfw -lGLEW -lm
 
 
 # =====
